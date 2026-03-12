@@ -13,8 +13,8 @@ release:
       app/build/outputs/apk/release/aligned.apk
     @apksigner sign \
       --alignment-preserved \
-      --ks foodyou.keystore \
-      --ks-key-alias foodyou \
+      --ks foodweightyou-release.jks \
+      --ks-key-alias foodweightyou \
       --out ./release-signed.apk \
       app/build/outputs/apk/release/aligned.apk
 
@@ -26,8 +26,8 @@ preview:
       app/build/outputs/apk/preview/aligned.apk
     @apksigner sign \
       --alignment-preserved \
-      --ks foodyou.keystore \
-      --ks-key-alias foodyou \
+      --ks foodweightyou-release.jks \
+      --ks-key-alias foodweightyou \
       --out ./preview-signed.apk \
       app/build/outputs/apk/preview/aligned.apk
 

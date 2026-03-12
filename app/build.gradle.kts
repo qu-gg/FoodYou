@@ -1,3 +1,4 @@
+import java.util.Properties
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.plugin.KotlinSourceSetTree
@@ -120,12 +121,26 @@ kotlin {
     }
 }
 
+val localProperties = Properties().apply {
+    val file = rootProject.file("local.properties")
+    if (file.exists()) file.inputStream().use { load(it) }
+}
+
 android {
     namespace = "com.maksimowiczm.foodyou"
     compileSdk = libs.versions.android.compileSdk.get().toInt()
 
+    signingConfigs {
+        create("release") {
+            storeFile = file(localProperties.getProperty("RELEASE_STORE_FILE", "../foodweightyou-release.jks"))
+            storePassword = localProperties.getProperty("RELEASE_STORE_PASSWORD") ?: System.getenv("RELEASE_STORE_PASSWORD")
+            keyAlias = localProperties.getProperty("RELEASE_KEY_ALIAS") ?: System.getenv("RELEASE_KEY_ALIAS")
+            keyPassword = localProperties.getProperty("RELEASE_KEY_PASSWORD") ?: System.getenv("RELEASE_KEY_PASSWORD")
+        }
+    }
+
     defaultConfig {
-        applicationId = "com.maksimowiczm.foodyou"
+        applicationId = "com.quagg.foodweightyou"
         minSdk = libs.versions.android.minSdk.get().toInt()
         targetSdk = libs.versions.android.targetSdk.get().toInt()
         versionCode = libs.versions.android.versionCode.get().toInt()
@@ -139,6 +154,7 @@ android {
     packaging { resources { excludes += "/META-INF/{AL2.0,LGPL2.1}" } }
     buildTypes {
         getByName("release") {
+            signingConfig = signingConfigs.getByName("release")
             isMinifyEnabled = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),

@@ -109,6 +109,11 @@ fun AboutScreen(onBack: () -> Unit, modifier: Modifier = Modifier) {
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
             )
             Text(
+                text = forkAttributionResource(MaterialTheme.typography.bodyMedium),
+                style = MaterialTheme.typography.bodyMedium,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+            )
+            Text(
                 text = icons8stringResource(MaterialTheme.typography.bodyMedium),
                 style = MaterialTheme.typography.bodyMedium,
                 color = MaterialTheme.colorScheme.onSurfaceVariant,

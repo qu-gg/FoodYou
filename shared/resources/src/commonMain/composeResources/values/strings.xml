@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name" translatable="false">Food You</string>
+    <string name="app_name" translatable="false">FoodWeightYou</string>
 
     <string name="en_dash" translatable="false">–</string>
     <string name="em_dash" translatable="false">—</string>
@@ -242,6 +242,8 @@
 
     <string name="link_icons8" translatable="false">https://icons8.com/</string>
     <string name="headline_launcher_icon_by_icons8">Launcher icon by Icons8</string>
+    <string name="headline_fork_of_food_you">Fork of FoodYou</string>
+    <string name="link_food_you" translatable="false">https://github.com/maksimowiczm/FoodYou</string>
 
     <string name="headline_open_food_facts" translatable="false">Open Food Facts</string>
     <string name="description_open_food_facts">A collaborative, free and open database of food products from around the world</string>
