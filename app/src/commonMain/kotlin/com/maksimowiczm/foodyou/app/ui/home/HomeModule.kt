@@ -6,6 +6,7 @@ import com.maksimowiczm.foodyou.app.ui.home.meals.card.MealsCardsViewModel
 import com.maksimowiczm.foodyou.app.ui.home.meals.settings.MealsCardsSettingsViewModel
 import com.maksimowiczm.foodyou.app.ui.home.personalization.HomePersonalizationViewModel
 import com.maksimowiczm.foodyou.app.ui.home.poll.PollsViewModel
+import com.maksimowiczm.foodyou.app.ui.home.weighttracker.WeightTrackerViewModel
 import com.maksimowiczm.foodyou.common.infrastructure.koin.userPreferencesRepository
 import org.koin.core.module.Module
 import org.koin.core.module.dsl.viewModel
@@ -36,6 +37,15 @@ fun Module.home() {
         PollsViewModel(
             observeActivePollUseCase = get(),
             pollPreferencesRepository = userPreferencesRepository(),
+        )
+    }
+}
+
+fun Module.weightTracker() {
+    viewModel {
+        WeightTrackerViewModel(
+            weightRepository = get(),
+            preferencesRepository = userPreferencesRepository(),
         )
     }
 }

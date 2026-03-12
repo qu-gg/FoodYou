@@ -519,4 +519,18 @@
     <string name="description_privacy_policy">See how your data is handled</string>
 
     <string name="error_open_food_facts_timeout">Open Food Facts is taking too long to respond. The service may be temporarily slow or unavailable. Try scanning the product barcode instead.</string>
+
+    <!-- Weight Tracker -->
+    <string name="headline_weight_tracker">Weight</string>
+    <string name="unit_kg" translatable="false">kg</string>
+    <string name="unit_lbs" translatable="false">lbs</string>
+    <string name="weight_range_week">7D</string>
+    <string name="weight_range_month">30D</string>
+    <string name="weight_range_3months">90D</string>
+    <string name="weight_range_all">All</string>
+    <string name="weight_no_entries">No weight entries yet. Tap + to log your weight.</string>
+    <string name="weight_log_today">Log weight</string>
+    <string name="weight_today_label">Weight</string>
+    <string name="weight_goal_label">Goal weight</string>
+    <string name="weight_selected_date_value">Selected day: %1$s %2$s</string>
 </resources>

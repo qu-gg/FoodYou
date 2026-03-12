@@ -44,6 +44,8 @@ import com.maksimowiczm.foodyou.fooddiary.infrastructure.room.MealEntity
 import com.maksimowiczm.foodyou.fooddiary.infrastructure.room.MeasurementEntity
 import com.maksimowiczm.foodyou.sponsorship.infrastructure.room.SponsorshipDatabase
 import com.maksimowiczm.foodyou.sponsorship.infrastructure.room.SponsorshipEntity
+import com.maksimowiczm.foodyou.weighttracker.infrastructure.room.WeightEntryEntity
+import com.maksimowiczm.foodyou.weighttracker.infrastructure.room.WeightTrackerDatabase
 
 @Database(
     entities =
@@ -65,6 +67,7 @@ import com.maksimowiczm.foodyou.sponsorship.infrastructure.room.SponsorshipEntit
             ManualDiaryEntryEntity::class,
             ProductFts::class,
             RecipeFts::class,
+            WeightEntryEntity::class,
         ],
     views = [RecipeAllIngredientsView::class, LatestMeasurementSuggestion::class],
     version = FoodYouDatabase.VERSION,
@@ -115,6 +118,7 @@ import com.maksimowiczm.foodyou.sponsorship.infrastructure.room.SponsorshipEntit
             /**
              * @see [FoodSearchFtsCyrillicMigration] Add Cyrillic tokenizer support to FTS tables
              */
+            AutoMigration(from = 32, to = 33), // Add WeightEntryEntity
         ],
 )
 @TypeConverters(
@@ -128,7 +132,8 @@ abstract class FoodYouDatabase :
     FoodDatabase,
     FoodSearchDatabase,
     FoodDiaryDatabase,
-    SponsorshipDatabase {
+    SponsorshipDatabase,
+    WeightTrackerDatabase {
 
     override suspend fun <T> withTransaction(block: suspend DomainTransactionScope<T>.() -> T): T =
         useWriterConnection {
@@ -139,7 +144,7 @@ abstract class FoodYouDatabase :
         }
 
     companion object {
-        const val VERSION = 32
+        const val VERSION = 33
 
         private val migrations: List<Migration> =
             listOf(

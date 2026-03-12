@@ -6,6 +6,7 @@ import com.maksimowiczm.foodyou.app.ui.food.diary.foodDiary
 import com.maksimowiczm.foodyou.app.ui.food.food
 import com.maksimowiczm.foodyou.app.ui.goals.goals
 import com.maksimowiczm.foodyou.app.ui.home.home
+import com.maksimowiczm.foodyou.app.ui.home.weightTracker
 import com.maksimowiczm.foodyou.app.ui.language.language
 import com.maksimowiczm.foodyou.app.ui.meal.meal
 import com.maksimowiczm.foodyou.app.ui.onboarding.onboarding
@@ -25,6 +26,7 @@ val uiModule = module {
     foodDiary()
     goals()
     home()
+    weightTracker()
     language()
     meal()
     onboarding()

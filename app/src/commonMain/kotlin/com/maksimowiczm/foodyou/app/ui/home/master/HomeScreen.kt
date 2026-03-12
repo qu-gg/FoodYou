@@ -24,6 +24,7 @@ import com.maksimowiczm.foodyou.app.ui.home.goals.GoalsCard
 import com.maksimowiczm.foodyou.app.ui.home.meals.card.MealsCards
 import com.maksimowiczm.foodyou.app.ui.home.poll.PollsCard
 import com.maksimowiczm.foodyou.app.ui.home.shared.rememberHomeState
+import com.maksimowiczm.foodyou.app.ui.home.weighttracker.WeightTrackerCard
 import com.maksimowiczm.foodyou.settings.domain.entity.HomeCard
 import foodyou.app.generated.resources.*
 import org.jetbrains.compose.resources.stringResource
@@ -106,6 +107,12 @@ fun HomeScreen(
                             onLongClick = onMealCardLongClick,
                             contentPadding = PaddingValues(horizontal = 8.dp),
                             modifier = Modifier.padding(bottom = 8.dp),
+                        )
+
+                    HomeCard.WeightTracker ->
+                        WeightTrackerCard(
+                            homeState = homeState,
+                            modifier = Modifier.padding(horizontal = 8.dp).padding(bottom = 8.dp),
                         )
                 }
             }

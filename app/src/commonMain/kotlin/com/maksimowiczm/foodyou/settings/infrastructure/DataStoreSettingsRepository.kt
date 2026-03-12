@@ -68,9 +68,14 @@ private fun MutablePreferences.setHomeCardOrder(
     value: List<HomeCard>,
 ) = setWithNull(key, value.joinToString(",") { it.ordinal.toString() })
 
-private fun Preferences.getHomeCardOrder(key: Preferences.Key<String>): List<HomeCard> =
-    runCatching { this[key]?.split(",")?.map { HomeCard.entries[it.toInt()] } }.getOrNull()
-        ?: HomeCard.defaultOrder
+private fun Preferences.getHomeCardOrder(key: Preferences.Key<String>): List<HomeCard> {
+    val saved =
+        runCatching { this[key]?.split(",")?.map { HomeCard.entries[it.toInt()] } }.getOrNull()
+            ?: return HomeCard.defaultOrder
+    // Append any new cards that aren't in the saved order
+    val missing = HomeCard.entries.filter { it !in saved }
+    return saved + missing
+}
 
 private fun MutablePreferences.setEnergyFormat(key: Preferences.Key<Int>, value: EnergyFormat) =
     setWithNull(key, value.ordinal)
